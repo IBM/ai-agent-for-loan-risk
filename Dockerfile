@@ -1,0 +1,14 @@
+FROM node:18-alpine
+
+ENV APPLICATION_HOME_DOCKER=/usr/src/app
+ENV APPLICATION_PORT=8080
+
+WORKDIR $APPLICATION_HOME_DOCKER
+
+COPY . .
+RUN npm install
+RUN npm run build
+
+EXPOSE $APPLICATION_PORT
+CMD ["npm","run", "start"]
+

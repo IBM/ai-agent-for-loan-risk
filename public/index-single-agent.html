@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Loan Risk - AI Agent</title>
+    <link href="stylesheets/general.css" type="text/css" rel="stylesheet"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+
+</head>
+<body>
+<div id="maindiv" class="maindiv">
+    <div class="top-container">
+        <div class="top">
+            Loan Risk - AI Agent <span style="font-size: 16px;font-family:"> (on IBM Cloud) </style></span>
+        </div>
+    </div>
+    <div class="middle-container">
+        <!--
+	<div class="above-button-text">
+        Information from main: [[<span id="userNameSpan"></span>]]<br>
+        </div>
+	-->
+        <div class="label-text">
+        <img src="images/input_sources_pink.png" style="width:20%; height:20%">
+        <br><b>Input:</b><button onclick="window.open('usage-single-agent.html', 'newwindow', 'width=650,height=550,left=500, top=75'); return false;" style="font-size: 10px;font-family: IBMPlexSans;">!</button><br>
+        <input id="input_query"  style="width:80%;font-size: 16px;font-family: IBMPlexSans;color:#0627a1;" value="" maxlength="254" onclick="this.select();" ></input>
+	<br><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+        <button onclick="create_and_send_request_from_ui_input('call_ai_agent')" style="width:150px;font-size: 14px;font-family: IBMPlexSans;">Ask AI Agent</button>
+        <br><span id="text_process_status"> </span>
+        <br>
+	<b>AI Agent response:</b><br><b><span id="text_ai_agent_response" style="color:#0627a1;"></span></b>
+        <br>
+	<br>
+	<hr>
+        <!-- <br><span id="user_config">[place to show any additional information from the main app]</span> -->
+        <br>Input JSON:
+        <br>
+        <textarea id="text_request" class="small-textarea" >
+        </textarea>
+        <br>
+	<br>
+	Response JSON:<br>
+        <textarea id="text_response" class="large-textarea" ></textarea>
+        <br>	
+        Status: <span id="text_status"> </span>
+        <br>
+        <br><span id="text_process_status"> </span>
+        <br><span id="text_success_failure"> </span>
+        <br><span id="text_details"></span>
+        <br><span id="text_confirmation_number"></span>
+        <br>
+
+        </div>
+    </div>
+
+	<!--
+    <div class="bottom-container">
+        <div class="bottom-container-data">
+        </div>
+        <br>Access Token:
+        <span id="access_token">[place to get access token when any api is called ]</span>
+        <div class="above-button-text">
+        <a href='protected.html'> Back to UI router menu</a><br><br>
+            Hi  <span id="userNameSpan"></span>. You were successfully authenticated.<br>
+        </div>
+        <div class="hello-text">
+            AI Orchestration - Application Main Endpoint menu:
+        </div>
+
+	-->
+    </div>
+
+
+</div>
+
+<script>
+
+////////////////////////////////////////
+////////////////////////////////////////
+// Helper functions for the  UI
+////////////////////////////////////////
+
+
+////////////////////////////////////////////////
+
+
+function create_and_send_request_from_ui_input(request_type) {
+
+        //you can get any UI element content and use for input of data.
+	console.log('request_type:',request_type);
+
+        //create a JSON object directly
+        //input_data = JSON.stringify({
+        //  post_req_user_param1: "John",
+        //  post_req_user_param2: "Smith"
+        //});
+
+        // create a JSON object and stringify it directly
+        //input_data_obj = {
+        //post_req_user_param1: "John",
+        //post_req_user_param2: "Smith"
+        //};
+        //input_data = JSON.stringify(input_data_obj);
+
+
+	//if request type is xyz then use abc ui element for the input
+	// and use lmn for for the API call
+
+	if (request_type=='call_ai_agent') {
+
+		input_text_area=document.getElementById('input_query');
+		var input_query=input_text_area.value; //.trim();
+	        //input_text_area=document.getElementById('text_request');
+	        //var input_data = input_text_area.value; //.trim();
+		var input_data_obj = { 
+	    		type: "call_ai_agent", 
+	    		query: input_query 
+		}; //close input_data_obj{}
+
+
+
+	}; //end of if (request_type=='call_ai_agent'
+
+	var input_data = JSON.stringify(input_data_obj);
+	console.log('input_data:', input_data);
+	document.getElementById('text_request').value=JSON.stringify(input_data_obj, undefined, 4);; //'gdggdjwgejwejkkjdwe';
+        makePOSTAPIcall(input_data, "app_endpoint_success", "app_endpoint_error");
+
+
+}
+
+////////////////////////////
+
+function makePOSTAPIcall(data_to_post, success_actioncode, error_actioncode) {
+
+                full_url = '/callagent'
+		//this can be initialized from the env
+                next_actioncode="notifyUI"
+		//can be received from the main call and used to define what action to be taken with responses. 
+	
+
+                $.ajax({
+                    url : full_url,
+                    type: "POST",
+                    data : data_to_post,
+                    headers: { "Content-type": "application/json"},
+                    success: function(data, textStatus, jqXHR)
+                    {
+                        handleSuccess(jqXHR, success_actioncode, "notifyUI");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        handleError(jqXHR, error_actioncode, "notifyUI");
+                    }
+                });
+
+	       var rMsg_status = "Processing request...";
+               const status_display_obj = document.getElementById('text_status');
+               const status_display_obj2 = document.getElementById('text_process_status');
+	       const display_obj_result = document.getElementById('text_success_failure');
+       	       const display_obj_detail = document.getElementById('text_details');
+               const display_obj_conf_nbr = document.getElementById('text_confirmation_number');
+	       const display_obj_ai_agent_response = document.getElementById('text_ai_agent_response');
+               const display_obj_img_result = document.getElementById('img_result');
+
+
+	       display_obj_result.innerHTML = '';
+    	       display_obj_detail.innerHTML = '';
+	       display_obj_conf_nbr.innerHTML = '';
+	       display_obj_ai_agent_response.innerHTML = '';
+               status_display_obj.innerHTML = rMsg_status;
+               status_display_obj2.innerHTML = rMsg_status;
+ 
+               var rMsg = "Request could not be completed";
+	       const display_obj = document.getElementById('text_response');
+               display_obj.value = "Please wait...";
+
+}
+
+/////////////////////////////////////////
+function handleError(jqXHR, funcType, nextactioncode){
+        //identify the UI components needed
+
+        //nextactioncode for now assuming only to be "notifyUI"
+        //can be received from the main call and used to define what action to be taken with responses.
+
+
+        var rMsg_status = "";
+        var rMsg = "Request could not be completed";
+        const status_display_obj = document.getElementById('text_status');
+        const status_display_obj2 = document.getElementById('text_process_status');
+	const display_obj = document.getElementById('text_response');
+        const display_obj_img_result = document.getElementById('img_result');
+
+
+        if (funcType == "app_endpoint_error"){
+                rMsg_status = "ERROR: "+funcType+" failed."; //call_3_post failed.";
+                rMsg_status = rMsg_status + "<br>readyState:" + jqXHR.readyState+"<br>status:"+jqXHR.status+"<br>statusText:"+jqXHR.statusText
+                //rMsg = "responseText:"+jqXHR.responseText;
+                rMsg = jqXHR.responseText;
+                //rMsg = rMsg + "<br>jqXHR:" + JSON.stringify(jqXHR);
+               
+                //do any other housekeeping due to failed request
+                // this can depend on the values of nextactioncode jqXHR.readyState jqXHR.status jqXHR.statusText etc.
+
+		if (nextactioncode ="notifyUI") {
+		        //update UI
+		        //document.getElementById('p_response').innerHTML=rMsg;
+                        //status_display_obj.textContent = rMsg_status;
+                        status_display_obj.innerHTML = rMsg_status;
+                        status_display_obj2.innerHTML = rMsg_status;
+                        //display_obj.textContent = rMsg
+                        display_obj.value = JSON.stringify(JSON.parse(rMsg), undefined, 4);
+	                display_obj_img_result.src = 'images/white-space.gif';
+		}
+        }
+
+}
+
+
+function handleSuccess(jqXHR, funcType, nextactioncode){
+
+
+	//identify the UI components needed
+	var rMsg_status = "";
+        var rMsg = "Request completed";
+	const status_display_obj = document.getElementById('text_status');
+        const status_display_obj2 = document.getElementById('text_process_status');
+	const display_obj = document.getElementById('text_response'); //'AJSpan');
+
+        const display_obj_result = document.getElementById('text_success_failure');
+        const display_obj_detail = document.getElementById('text_details');
+        const display_obj_conf_nbr = document.getElementById('text_confirmation_number');
+        const display_obj_img_result = document.getElementById('img_result');
+        const display_obj_ai_agent_response = document.getElementById('text_ai_agent_response');
+
+        if (funcType == "app_endpoint_success"){
+                rMsg_status = "SUCCESS: "+funcType+" called.";
+                rMsg_status = rMsg_status + "<br>readyState:" + jqXHR.readyState+"<br>status:"+jqXHR.status+"<br>statusText:"+jqXHR.statusText
+                //rMsg = "responseText:"+jqXHR.responseText;
+                rMsg = jqXHR.responseText;
+                //rMsg = rMsg + "<br>jqXHR:" + JSON.stringify(jqXHR);
+                //do any other housekeeping due to succesful request
+                // this can depend on the values of nextactioncode jqXHR.readyState jqXHR.status jqXHR.statusText etc.
+                if (nextactioncode ="notifyUI") {
+                        //update UI
+
+                        //document.getElementById('p_response').innerHTML=rMsg;
+                        //status_display_obj.textContent = rMsg_status;
+                        status_display_obj.innerHTML = rMsg_status;
+                        status_display_obj2.innerHTML = "Request completed."; //rMsg_status;
+                        //display_obj.textContent = rMsg
+			display_obj.value = JSON.stringify(JSON.parse(rMsg), undefined, 4);	
+
+			//final_message= JSON.stringify( JSON.parse(rMsg)[1], undefined, 4);
+                        final_message= JSON.stringify( JSON.parse(rMsg)[JSON.parse(rMsg).length-1].content , undefined, 4);
+			console.log("final_message:",final_message);
+		        final_message2=final_message.replaceAll(/\\n/g, "<br>");
+			console.log("final_message2:",final_message2);
+                        display_obj_ai_agent_response.innerHTML  = final_message2; //final_message; //"The response is: <<placehodler tbd>>";
+
+
+
+                }
+        }
+
+
+}
+
+
+
+</script>
+
+</body>
+</html>
+

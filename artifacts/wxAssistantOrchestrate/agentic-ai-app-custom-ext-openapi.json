@@ -1,0 +1,108 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "description": "Minimal spec for calling Bank Loan Risk AI Agent API endpoint",
+    "title": "Loan Risk AI Agent API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://agentic-ai-app.1r9wutl307jv.us-south.codeengine.appdomain.cloud",
+      "description": "loan risk ai agent base url"
+    }
+  ],
+  "components": {
+    "schemas":{
+      "messages": {
+        "type": "object",
+        "description": "agent messages",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "human or ai"
+          },
+          "content": {
+            "type": "string",
+            "description": "message content"
+          },
+          "toolCalls": {
+            "type": "array",
+            "description": "tool call details",
+            "items": {
+              "$ref": "#/components/schemas/toolcalls"
+            }
+          }
+        }
+    },
+    "toolcalls": {
+      "type": "object",
+      "description": "tool call details",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "name"
+        },
+        "args": {
+          "type": "object",
+          "description": "message content"
+        },
+        "type": {
+          "type": "string",
+          "description": "tool type"
+          },
+        "id": {
+          "type": "string",
+          "description": "tool id"
+          }
+        }
+      }
+  }
+  },
+  "paths": {
+    "/callagent": {
+      "post": {
+        "description": "Call the top level AI agent endpoint",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["type", "query"],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "description": "The type of call. Always call_ai_agent",
+                    "example": "call_ai_agent"
+                  },
+                  "query": {
+                    "type": "string",
+                    "description": "The input query for the ai agent."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/messages"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    }
+  }
+}
