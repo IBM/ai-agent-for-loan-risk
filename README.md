@@ -1,2 +1,60 @@
-# ai-agent-for-loan-risk
-This repository provides a functional AI agent as a proof-of-concept(PoC) and demonstration for agentic AI adoption in industry/enterprise workflows and use cases.
+# Loan Risk - AI Agent
+
+This repository provides a functional AI agent as a proof-of-concept(PoC) and demonstration for agentic AI adoption in industry/enterprise workflows and use cases. 
+
+In addition to showing IBM Cloud and watsonx features, the PoC is focused on showing one of the main values of using agentic AI - _relying on LLMs to reason about what to do and take actions for driving a workflow_, instead of relying on traditional approach of rules and conditions. 
+
+For questions or feedback contact Anuj Jain (jainanuj@us.ibm.com)
+
+To learn more about the key features and architectural concepts of agentic AI using the Loan Risk AI Agent as a financial industry use case refer to the article [Agentic AI in enterprise workflow automation](https://developer.ibm.com/articles/agentic-ai-workflow-automation/).
+
+## Use Case
++ AI agent to support bank loan risk evaluation workflow.
++ AI agent determines overall risk and interest rate for a bank loan using LLMs and relevant tools.
+
+Similar use cases can be found in insurance, healthcare and other industry/enterprise workflows.
+
+
+## Architecture and Implementation
++ Architecture: Single AI Agent with Tools (using LangGraph, TypeScript/NodeJS)
++ LLM: mistral-large (from IBM watsonx.ai)
++ Tools: API/functions (for credit score, account status, risk evaluation criteria, interest rate determination)
+
+
+![Conceptual architecture](artifacts/architecture/LoanRisk-Single-AI-Agent-Conceptual.png)
+
+![High-level deployment architecture](artifacts/architecture/LoanRisk-Single-AI-Agent-Deployment.png)
+
+
+## Prerequisites
+Requires IBM Cloud account with:
+-	Code Engine service and Project
+-	watsonx.ai service and watsonx.ai Project
+-	watsonx.ai API Key
+-	watsonx.ai Project ID
+
+Optionally, 
+
+
+For using RAG LLM (Agentic RAG feature) you will also need:
+-	watsonx.ai Deployment endpoint for vector index RAG inferencing
+
+For using watsonx Assistant/Orchestrate (Chat widget) you will also need:
+-	watsonx.ai Assistant/Orchestrate service
+
+
+## Deployment
+
+Installation/Deployment options include:
+- IBM Cloud Code Engine - Refer instructions [here.](artifacts/deployment/deployment-README.md)
+- Python Notebook - A simplified version of this PoC can be downloaded from [here](artifacts/python-notebook/NB-ai-agent-loan-risk-demo-v1.ipynb) and imported in watsonx.ai Project as an asset. It is meant for understanding the concepts and for experimentation.
+
+
+## Usage
+For usage and additional examples refer [here.](artifacts/usage-examples/usage-examples-README.md)
+
+![Example usage screenshot](artifacts/usage-examples/UsageExample2.png)
+
+  
+
+

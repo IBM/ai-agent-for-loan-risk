@@ -1,0 +1,22 @@
+FROM registry.redhat.io/rhel9/s2i-core:9.5@sha256:9bf05bcc1acc961f8dfe64752ab36be188a6fe3d219b0d3343d28ef7e00ffb62
+
+USER root
+RUN yum update -y && yum upgrade -y
+RUN npm -v
+
+ENV APPLICATION_HOME_DOCKER=/usr/src/app
+ENV APPLICATION_PORT=8080
+
+WORKDIR $APPLICATION_HOME_DOCKER
+
+COPY . .
+RUN npm install
+RUN npm run build
+
+RUN chown -R 1001:0 ${APPLICATION_HOME_DOCKER} && chmod -R u+rwx ${APPLICATION_HOME_DOCKER} && \
+    chmod -R g=u ${APPLICATION_HOME_DOCKER}
+
+USER 1001
+
+EXPOSE $APPLICATION_PORT
+CMD ["npm","run", "start"]

@@ -1,0 +1,31 @@
+{
+  "name": "bank-loan-risk-ai-agent",
+  "version": "0.0.1",
+  "main": "main.ts",
+  "scripts": {
+    "dev": "nodemon",
+    "start": "node build/main.js",
+    "build": "tsc --project ./"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "Anuj Jain jainanuj@us.ibm.com",
+  "license": "ISC",
+  "dependencies": {
+    "@ibm-cloud/watsonx-ai": "^1.4.0",
+    "@langchain/anthropic": "^0.3.11",
+    "@langchain/community": "^0.3.22",
+    "@langchain/core": "^0.3.27",
+    "@langchain/langgraph": "^0.2.39",
+    "express": "^4.21.2",
+    "json-server": "^0.16.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  },
+  "description": ""
+}

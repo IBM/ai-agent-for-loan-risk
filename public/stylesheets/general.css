@@ -1,0 +1,258 @@
+html {
+    height: 100%;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+.top-container {
+    background: #0354E9;
+    box-shadow: 0 2px 2px 0 rgba(140, 155, 165, 0.25);
+    text-align: center;
+    color: #42535C;
+    margin-bottom: 28px;
+}
+
+
+.maindiv {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.middle-container {
+    background: white;
+    text-align: left;
+    margin-left: 2%;
+    margin-bottom: 20px;
+}
+
+.bottom-container {
+    background: #F5F7FA;
+    box-shadow: 0 2px 2px 0 rgba(140, 155, 165, 0.25);
+    flex-grow: 1;
+}
+
+.bottom-container-data {
+    #display: inline-block;
+    color: darkblue;
+    margin-top: 15px;
+    margin-left: 2%;
+    margin-right: 8%;
+    text-align: right;
+    margin-bottom: 15px;
+    #min-width: 80%;
+}
+
+.token-title {
+    font-family: IBMPlexSans;
+    font-size: 14px;
+    color: #000000;
+    margin-bottom: 21px;
+}
+
+.token-info {
+    font-family: IBMPlexMono;
+    background: #FFFFFF;
+    box-shadow: 0 2px 2px 0 rgba(140, 155, 165, 0.25);
+    font-size: 14px;
+    color: #152934;
+    line-height: 24px;
+    font-weight: normal;
+    padding: 15px 20px 20px 32px;
+    margin-right: 90px;
+    margin-bottom: 20px;
+}
+
+.login {
+    margin-right: 24px;
+}
+
+.login-button {
+    background: #BFBFBF; 
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top:10px;
+    margin-right:20px;
+    height: 30px;
+    width: 100px;
+    float: right;
+}
+
+.logout {
+    margin-right: 24px;
+}
+
+.logout-icon {
+    margin-top: 10px;
+    float: right;
+}
+
+.hello-text {
+    font-family: IBMPlexSans-Light;
+    font-size: 20px;
+    color: #000000;
+    letter-spacing: 0;
+    line-height: 26px;
+    margin-bottom: 30px;
+}
+
+.label-text {
+    font-family: IBMPlexSans-Light;
+    font-size: 16px;
+    color: #000000;
+    letter-spacing: 0;
+    line-height: 26px;
+    margin-bottom: 30px;
+}
+
+.above-button-text {
+    font-family: IBMPlexSans-Light;
+    font-size: 14px;
+    color: #000000;
+    letter-spacing: 0;
+    margin-bottom: 13px;
+}
+
+.button {
+    background: #4178BE;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    height: 36px;
+    width: 231px;
+}
+
+.button-text {
+    font-family: IBMPlexSans-Medium;
+    font-size: 14px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    text-align: center;
+    margin: 8px 20px 10px 12px;
+}
+
+.hide {
+    display: none;
+}
+
+.top {
+    background: #0354E9;
+    color: #BFBFBF;
+    #font-weight: lighter;
+    #box-shadow: 0 4px 2px 0 rgba(140, 155, 165, 0.25);
+    padding-bottom: 10px;
+
+    font-family: IBMPlexSans;
+    font-size: 30px;
+    text-align: left;
+    #color: white;
+    #letter-spacing: 0;
+    #line-height: 26px;
+    margin-left:45px;
+    #margin-bottom: 30px;
+}
+
+.small-textarea {
+  text-align: left;
+  width: 80%;
+  height: 150px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+.large-textarea {
+  text-align: left;
+  width: 80%;
+  height: 550px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+.flex-top {
+    flex: 1;
+    text-align: center;
+    margin-top: 2.5%;
+}
+
+.flex-bottom {
+    font-family: IBMPlexSans-Medium;
+    font-size: 14px;
+    color: #42535C;
+    letter-spacing: 0;
+    line-height: 20px;
+    font-weight: normal;
+    flex: none;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.text-div {
+    font-family: IBMPlexSans-Light;
+    font-size: 20px;
+    color: #152935;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 24px;
+    flex: 1;
+    margin-bottom: 59px;
+}
+
+.button {
+    font-family: IBMPlexSans-Medium;
+    font-size: 14px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    text-align: center;
+    background-color: #4178BE;
+    border: none;
+    padding: 10px 40px;
+    text-decoration: none;
+    cursor: pointer;
+    width: 158px;
+    height: 40px;
+    margin-bottom: 4px;
+}
+
+.logo-icon {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 41px;
+    margin-top: 81px;
+}
+
+#menu li {
+    padding: 5px 15px;
+    border-top: 1px solid #eaeaea;
+}
+
+#menu ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+#menu li:nth-child(1) {
+    border-top: 0;
+}
+
+#menu li a {
+    color: black;
+}
