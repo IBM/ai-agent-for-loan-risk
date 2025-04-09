@@ -15,17 +15,18 @@ Requires IBM Cloud account with:
 
 
   
-## Deployment steps summary
-A detailed document of steps is available [here](Deploying-Loan-Risk-AI-Agent-on-Code-Engine.pdf).
-#### 1. Confirm prerequisites and gather information
-Note the user’s API key value. It will be the environment variable WATSONX_AI_APIKEY.
+## Deployment Summary
+**NOTE**: A document with detailed steps is available [here](Deploying-Loan-Risk-AI-Agent-on-Code-Engine.pdf).
 
-Depending on where the watsonx.ai service is deployed get the watsonx.ai API endpoint URL from [here](https://cloud.ibm.com/apidocs/watsonx-ai#endpoint-url). It will be the environment variable WATSONX_SERVICE_URL.
+#### 1. Confirm prerequisites and gather information
+Note the user’s API key value. It will be used to set the environment variable WATSONX_AI_APIKEY.
+
+Depending on where the watsonx.ai service is deployed get the watsonx.ai API endpoint URL from [here](https://cloud.ibm.com/apidocs/watsonx-ai#endpoint-url). It will be used to set the environment variable WATSONX_SERVICE_URL.
 
 #### 2. Create a Project in watsonx.ai 
 Launch watsonx.ai and create a Project, or use an existing one.
 
-Note the Project Id. This will be the environment variable WATSONX_PROJECT_ID.
+Note the Project Id. This will be used to set the environment variable WATSONX_PROJECT_ID.
 
 #### 3.	Deploy application to Code Engine 
 Follow the steps to _deploy the application from repository source code_ as described [here](https://cloud.ibm.com/apidocs/watsonx-ai#endpoint-url).
