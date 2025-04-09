@@ -5,7 +5,7 @@ NOTE: This document is work in progress.
 
 ## Prerequisites
 Requires IBM Cloud account with:
--	watsonx.ai service and Project for inferencing [(refer)](https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/use-case-watsonx-ai.html?context=wx&locale=en&audience=wdp)
+-	watsonx.ai service and Project for inferencing [(refer)](https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/signup-wx.html?context=wx&audience=wdp)
 -	Code Engine service and Project to deploy the application [(refer)](https://cloud.ibm.com/docs/codeengine)
 
 Requires these environment variables when deploying the application:
