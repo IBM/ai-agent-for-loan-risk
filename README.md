@@ -44,9 +44,9 @@ For using chat conversaiton feature, you will need watsonx Assistant/Orchestrate
 
 Steps for deploying the base and enhancements are provided below.
 
-#### Steps
+#### Deployment options
 - IBM Cloud Code Engine - Refer instructions [here.](artifacts/deployment/deployment-README.md)
-- Python Notebook - A simplified version of this PoC can be downloaded from [here](artifacts/python-notebook/NB-ai-agent-loan-risk-demo-v1.ipynb) and imported in watsonx.ai Project as an asset. It is meant for understanding the concepts and for experimentation.
+- Python Notebook - A simplified version of this PoC can be set up as a Python Notebook (Code Engine deployment not required). Download from [here](artifacts/python-notebook/NB-ai-agent-loan-risk-demo-v1.ipynb) and import in watsonx.ai Project as an asset. It is meant for understanding the concepts and for experimentation.
 
 
 ## Usage
