@@ -6,7 +6,10 @@ With a focus on the financial industry, it uses a bank loan processing workflow 
 
 The application is built to run on IBM Cloud – deploy on Code Engine to host the code for the AI agent, use watsonx.ai for inferencing and retrieval augmented generation (RAG) with LLMs, and watsonx Assistant/Orchestrate for a chat conversation experience.
 
-To learn more about the key features and architectural concepts of agentic AI and about using this Loan Risk AI Agent, refer to the article [Agentic AI in enterprise workflow automation](https://developer.ibm.com/articles/agentic-ai-workflow-automation/).
+To learn more about the key features and architectural concepts of agentic AI and about using this Loan Risk AI Agent, you can: 
+
+- Read the article [Agentic AI in enterprise workflow automation](https://developer.ibm.com/articles/agentic-ai-workflow-automation/).
+- Watch the 5-minute demo video [Agentic AI on IBM Cloud - Demo](https://mediacenter.ibm.com/media/Agentic+AI+on+IBM+Cloud+-+Demo+Video/1_kn6kvqmz).
 
 For questions or feedback contact Anuj Jain (jainanuj@us.ibm.com).
 
