@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <title>Agentic Financial Assistant</title>
+    <link rel='stylesheet' href='stylesheets/general.css'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="stylesheets/general.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<div id="maindiv" class="maindiv">
+    <div class="middle-container">
+        <span> <img id="website" src="images/wxasst-header.png" align="left" width="100%" height="80%"></span>
+        <span class="text-div">
+          This demo showcases <a href="https://www.ibm.com/think/topics/agentic-ai">agentic AI</a>, an autonomous, adaptable system that can perform tasks independently and purposefully.
+        </span>
+        <br>
+        <br>
+        <span class="text-div">
+          To use the application, you assume the persona of a human risk analyst from a bank. <br>
+          You can interact with the Loan Risk AI agent to assess the risk and interest rate for customers. <br>
+          When requested, the Loan Risk AI agent interprets the question context, uses LLMs and information about the available tools to decide the logic and sequence for completing the request, and then acts on the information to complete the request. <br>
+          LLMs receive the questions and natural language prompt instructions from the AI agent, but there is no hardcoded traditional programming logic for interpretation or tool sequence to find the response. <br><br>
+          To begin, click on the icon on the bottom right. <br>
+          A list of sample queries, and the agent workflow, is located <a href="https://agentic-ai-app.1r9wutl307jv.us-south.codeengine.appdomain.cloud/usage-single-agent.html">here</a>.
+          A suggested starter query is "What can you do for me? How?" or similar - remember that the agent uses natural language processing, so queries don't have to be exactly worded as in the examples.
+        </div>
+    </div>
+    <script>
+
+
+  window.watsonAssistantChatOptions = {
+    integrationID: "[[[WXASST_INTEGRATION_ID]]]", // The ID of this integration.
+    region: "[[[WXASST_REGION]]]", // The region your integration is hosted in.
+    serviceInstanceID: "[[[WXASST_SERVICE_INSTANCE_ID]]]", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+
+
+    </script>
+</div>
+
+
+</body>
+</html>
+ 
