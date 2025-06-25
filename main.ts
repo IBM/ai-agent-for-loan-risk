@@ -121,6 +121,18 @@ if (process.env.ENABLE_WXASST) {
           if (err) return console.log(err);
         });
       });
+      fs.readFile('public/wx-template2.html', 'utf8', function (err,data) {
+        if (err) {
+          return console.log(err);
+        }
+        var result1 = data.replace('[[[WXASST_INTEGRATION_ID]]]', process.env.WXASST_INTEGRATION_ID );
+        var result2 = result1.replace('[[[WXASST_REGION]]]', process.env.WXASST_REGION );
+        var result3 = result2.replace('[[[WXASST_SERVICE_INSTANCE_ID]]]', process.env.WXASST_SERVICE_INSTANCE_ID );
+
+        fs.writeFile('public/wx-detailed.html', result3, 'utf8', function (err) {
+          if (err) return console.log(err);
+        });
+      });
     } else {
       console.log("Unable to set up watsonx Assistant widget. Missing one or more envars from WXASST_INTEGRATION_ID, WXASST_REGION, WXASST_SERVICE_INSTANCE_ID,");
     }
