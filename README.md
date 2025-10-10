@@ -22,7 +22,7 @@ Similar use cases can be found in insurance, healthcare and other industry/enter
 
 ## Architecture
 + Architecture: Single AI Agent with Tools (using LangGraph, TypeScript/NodeJS)
-+ LLM: mistral-large (from IBM watsonx.ai)
++ LLM: meta-llama/llama-3-2-90b-vision-instruct (from IBM watsonx.ai) (mistral-large is deprecated)
 + Tools: API/functions (for credit score, account status, risk evaluation criteria, interest rate determination)
 
 #### Conceptual Architecture
