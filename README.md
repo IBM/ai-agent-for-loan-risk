@@ -1,5 +1,7 @@
 # Loan Risk - AI Agent
 
+> Note: - Due to the deprecation of "mistral-large" on watsonx.ai in ~October 2025, this application now uses "llama-3-2-90b-vision-instruct" and does not perform as documented in this repository. It needs to be tested and updated further. See contact information below.
+
 This repository provides an AI agent application for demonstration and proof-of-concept(PoC) to showcase agentic AI adoption in industry/enterprise workflows and use cases.
 
 With a focus on the financial industry, it uses a bank loan processing workflow as an example that leverages agentic AI. It demonstrates one of the main values of using agentic AI - _relying on LLMs to reason about what to do and take actions_, instead of relying on traditional approach of rules and conditions. 
