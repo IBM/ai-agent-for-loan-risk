@@ -1,6 +1,6 @@
 # Loan Risk - AI Agent
 
-> Note: - Due to the deprecation of "mistral-large" on watsonx.ai in ~October 2025, this application now uses "llama-3-2-90b-vision-instruct" and does not perform as documented in this repository. It needs to be tested and updated further. See contact information below.
+> Note: - Due to the deprecation of "mistral-large" on watsonx.ai in ~October 2025, this application now uses "ibm/granite-4-h-small" and does not perform as documented in this repository. It needs to be tested and updated further. See contact information below.
 
 This repository provides an AI agent application for demonstration and proof-of-concept(PoC) to showcase agentic AI adoption in industry/enterprise workflows and use cases.
 
@@ -24,7 +24,7 @@ Similar use cases can be found in insurance, healthcare and other industry/enter
 
 ## Architecture
 + Architecture: Single AI Agent with Tools (using LangGraph, TypeScript/NodeJS)
-+ LLM: meta-llama/llama-3-2-90b-vision-instruct (from IBM watsonx.ai) (mistral-large is deprecated)
++ LLM: ibm/granite-4-h-small (from IBM watsonx.ai) (mistral-large is deprecated)
 + Tools: API/functions (for credit score, account status, risk evaluation criteria, interest rate determination)
 
 #### Conceptual Architecture
