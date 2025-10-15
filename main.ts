@@ -153,7 +153,7 @@ const agentic_instructions = {
   //NOTE: Also - tbd -- There are additional descriptions for the tool input argumets that impact tool use. 
   //eg schema: z.object({ customer_id: z.string().describe("Customer's id"),
 
-  model: 'watsonx-ChatWatsonx-meta-llama',
+  model: 'watsonx-ChatWatsonx',
   model_minTokens: 150, //not applicable to some models
   model_maxTokens: 250,
   model_temperature: 0.5, // 0 deterministic ie greedy mode
@@ -517,9 +517,9 @@ const setupTools = async () => {
 const setupModelWithTools = async (tools: Array<any>) => {
 
 
-    if ( agentic_instructions.model == 'watsonx-ChatWatsonx-meta-llama' ) {
-    //props for meta-llama/llama-3-2-90b-vision-instruct
-    console.log('Using watsonx-ChatWatsonx-meta-llama');
+    if ( agentic_instructions.model == 'watsonx-ChatWatsonx' ) {
+    //props for meta-llama/llama-3-2-90b-vision-instruct or other models
+    console.log('Using watsonx-ChatWatsonx');
     const props = {
         minTokens: agentic_instructions.model_minTokens,// 150,
         maxTokens: agentic_instructions.model_maxTokens, //250,
@@ -530,7 +530,8 @@ const setupModelWithTools = async (tools: Array<any>) => {
 
     const modelWithTools = new ChatWatsonx({
         watsonxAIAuthType: "iam",
-		model: "meta-llama/llama-3-2-90b-vision-instruct",
+		model: "ibm/granite-4-h-small",
+		//model: "meta-llama/llama-3-2-90b-vision-instruct",
         //model: "mistralai/mistral-large", #deprecated
         //model: "ibm/granite-3-8b-instruct",
         //model: "meta-llama/llama-3-1-70b-instruct",
@@ -542,7 +543,7 @@ const setupModelWithTools = async (tools: Array<any>) => {
         }).bindTools(tools);
         
         return modelWithTools;
-    }; // end if watsonx-ChatWatsonx-meta-llama',
+    }; // end if watsonx-ChatWatsonx',
   
     //return modelWithTools; //returned in the block.
 
